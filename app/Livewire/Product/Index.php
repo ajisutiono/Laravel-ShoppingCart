@@ -22,23 +22,27 @@ class Index extends Component
         'formClose' => 'formCloseHandler',
         'productStored' => 'productStoredHandler'
     ];
-    public function mount() {
+    public function mount()
+    {
         $this->search = request('search', $this->search);
     }
     public function render()
     {
         return view('livewire.product.index', [
             'products' => $this->search === null ?
-            Product::latest()->paginate($this->paginate) :
-            Product::latest()->where('title', 'like', '%'. $this->search . '%')->paginate($this->paginate)
+                Product::latest()->paginate($this->paginate) :
+                Product::latest()->where('title', 'like', '%' . $this->search . '%')->paginate($this->paginate)
         ]);
     }
 
-    public function formCloseHandler() {
+    public function formCloseHandler()
+    {
         $this->formVisible = false;
     }
 
-    public function productStoredHandler() {
+    public function productStoredHandler()
+    {
         $this->formVisible = false;
+        session()->flash("message", "Product created successfully!");
     }
 }
