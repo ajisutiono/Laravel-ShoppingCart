@@ -61,7 +61,8 @@
                                     <td>
                                         <button wire:click.prevent="editProduct({{ $product->id }})"
                                             class="btn btn-sm btn-info text-white">Edit</button>
-                                        <button class="btn btn-sm btn-danger">Delete</button>
+                                        <button wire:click="deleteProduct({{ $product->id }})"
+                                            class="btn btn-sm btn-danger">Delete</button>
 
                                     </td>
                                 </tr>
