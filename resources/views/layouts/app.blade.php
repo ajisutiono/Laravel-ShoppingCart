@@ -79,12 +79,13 @@
         </nav>
 
         <main class="py-4">
-            {{-- @yield('content') --}}
-            {{ $slot }}
+            @yield('content')
+            
         </main>
     </div>
     
     <!-- Scripts Live Wire -->
+    {{ $slot }}
     @livewireScripts
 </body>
 </html>

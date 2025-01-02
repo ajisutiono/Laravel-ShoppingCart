@@ -3,6 +3,7 @@
 namespace App\Livewire\Product;
 
 use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\WithFileUploads;
 use Illuminate\Support\Str;
@@ -21,8 +22,9 @@ class Create extends Component
         return view('livewire.product.create');
     }
 
-    public function store() {
-        
+    public function store()
+    {
+
         $this->validate([
             'title' => 'required',
             'price' => 'required|numeric',
@@ -38,7 +40,7 @@ class Create extends Component
                 . uniqid()
                 . '.' . $this->image->getClientOriginalExtension();
 
-            $this->image->storeAs('public', $imageName, 'local');
+            $this->image->storeAs('images', $imageName, 'public');
         }
 
         $product = [
@@ -46,7 +48,7 @@ class Create extends Component
             'description' => $this->description,
             'price' => $this->price,
             'image' => $imageName
-            
+
         ];
 
         Product::create($product);

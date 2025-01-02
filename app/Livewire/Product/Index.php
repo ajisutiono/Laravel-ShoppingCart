@@ -12,7 +12,8 @@ class Index extends Component
 
     public $paginate = 10;
     public $search;
-    public $formVisible;
+    public $formVisible = false;
+    public $formUpdate = false;
 
     protected $updateQueryString = [
         ['search' => ['except' => '']]
@@ -20,7 +21,8 @@ class Index extends Component
 
     protected $listeners = [
         'formClose' => 'formCloseHandler',
-        'productStored' => 'productStoredHandler'
+        'productStored' => 'productStoredHandler',
+        'productUpdated' => 'productUpdatedHandler'
     ];
     public function mount()
     {
@@ -44,5 +46,19 @@ class Index extends Component
     {
         $this->formVisible = false;
         session()->flash("message", "Product created successfully!");
+    }
+
+    public function editProduct ($productId)
+    {
+        $this->formUpdate = true;
+        $this->formVisible = true;
+        $product = Product::find($productId);
+        $this->dispatch('editProduct', $product)->to(Update::class);
+    }
+
+    public function productUpdatedHandler ()
+    {
+        $this->formVisible = false;
+        session()->flash('message', 'Product updated successfully');
     }
 }
