@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Product\Index;
+use App\Livewire\Shop\Cart;
 use App\Livewire\Shop\Index as ShopIndex;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +20,6 @@ Route::get('/admin/product', Index::class)
 
 Route::get('/shop', ShopIndex::class)
     ->name('shop.index');
+
+Route::get('/cart', Cart::class)
+    ->name('shop.cart');
