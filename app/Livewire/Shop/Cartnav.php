@@ -10,7 +10,8 @@ class Cartnav extends Component
     public $cartTotal = 0;
 
     public $listeners = [
-        'addToCart' => 'updateCartTotal'
+        'addToCart' => 'updateCartTotal',
+        'removeFromCart' => 'updateCartTotal'
     ];
 
     public function mount()
