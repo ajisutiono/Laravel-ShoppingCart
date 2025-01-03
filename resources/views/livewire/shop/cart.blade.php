@@ -30,7 +30,8 @@
                             <tfoot>
                                 <tr>
                                     <td colspan="3">
-                                        <button class="btn btn-primary float-right">Checkout</button>
+                                        <a href="{{ route('shop.checkout') }}"
+                                            class="btn btn-primary float-right">Checkout</a>
                                     </td>
                                 </tr>
                             </tfoot>

@@ -2,6 +2,7 @@
 
 use App\Livewire\Product\Index;
 use App\Livewire\Shop\Cart;
+use App\Livewire\Shop\Checkout;
 use App\Livewire\Shop\Index as ShopIndex;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,6 @@ Route::get('/shop', ShopIndex::class)
 
 Route::get('/cart', Cart::class)
     ->name('shop.cart');
+
+Route::get('/checkout', Checkout::class)
+    ->name('shop.checkout');
